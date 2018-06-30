@@ -2251,11 +2251,17 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
         }
         switch (expr1->kind) {
             case Name_kind:
+                if (ctx == Store && !forbidden_check(c, n,
+                                    PyBytes_AS_STRING(e->v.Name.id)))
+                        return 0;
+                e->v.Name.ctx = ctx;
+                break;
+            /*case Name_kind:
                 if (!forbidden_check(c, n, PyBytes_AS_STRING(e->v.Name.id)) {
                     return NULL;
                 }
                 expr1->v.Name.ctx = Store;
-                break;
+                break;*/
             default:
                 // ast_error(c, ch, "illegal target for increment/decrement");
                 ast_error(ch, "illegal target for increment/decrement");
