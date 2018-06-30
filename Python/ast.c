@@ -2239,7 +2239,7 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
                 operator = Add;
                 break;
             case decr_stmt:
-                operator = Subtract;
+                operator = Sub;
                 break;
         }
 
