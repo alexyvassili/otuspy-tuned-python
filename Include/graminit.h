@@ -85,3 +85,5 @@
 #define testlist1 338
 #define encoding_decl 339
 #define yield_expr 340
+#define incr_stmt 341
+#define decr_stmt 342
