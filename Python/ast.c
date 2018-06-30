@@ -2251,10 +2251,10 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
         }
         switch (expr1->kind) {
             case Name_kind:
-                if (ctx == Store && !forbidden_check(c, n,
-                                    PyBytes_AS_STRING(e->v.Name.id)))
+                if (ch == Store && !forbidden_check(c, n,
+                                    PyBytes_AS_STRING(expr1->v.Name.id)))
                         return 0;
-                e->v.Name.ctx = ctx;
+                expr1->v.Name.ctx = Store;
                 break;
             /*case Name_kind:
                 if (!forbidden_check(c, n, PyBytes_AS_STRING(e->v.Name.id)) {
