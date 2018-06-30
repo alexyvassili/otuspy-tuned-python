@@ -2255,8 +2255,8 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
                 expr1->v.Name.ctx = Store;
                 break;
             default:
-                ast_error(c, ch,
-                          "illegal target for increment/decrement");
+                // ast_error(c, ch, "illegal target for increment/decrement");
+                ast_error(ch, "illegal target for increment/decrement");
                 return NULL;
         }
         // Create a PyObject for the number 1
