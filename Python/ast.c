@@ -2179,6 +2179,8 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
        testlist: test (',' test)* [',']
        augassign: '+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=' | '^='
                 | '<<=' | '>>=' | '**=' | '//='
+       incr_stmt: '++'
+       decr_stmt: '--'
        test: ... here starts the operator precendence dance
      */
 
@@ -2229,7 +2231,7 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
                          c->c_arena);
     }
 
-    else if ((TYPE(CHILD(n, 1)) == incr_stmt) || (TYPE(CHILD(n, 1)) == decr_stmt)) {
+    /*else if ((TYPE(CHILD(n, 1)) == incr_stmt) || (TYPE(CHILD(n, 1)) == decr_stmt)) {
         expr_ty expr1, expr2;
         node *ch = CHILD(n, 0);
         operator_ty operator;
@@ -2269,7 +2271,7 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
         // Create that as an expression on the same line and offset as the ++/--
         expr2 = Num(pynum, LINENO(n), n->n_col_offset, c->c_arena);
         return AugAssign(expr1, operator, expr2, LINENO(n), n->n_col_offset, c->c_arena);
-    }
+    }*/
 
     else {
         int i;
