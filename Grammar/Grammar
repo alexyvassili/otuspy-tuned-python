@@ -42,6 +42,11 @@ augassign: ('+=' | '-=' | '*=' | '/=' | '%=' | '&=' | '|=' | '^=' |
 print_stmt: 'print' ( [ test (',' test)* [','] ] |
                       '>>' test [ (',' test)+ [','] ] )
 del_stmt: 'del' exprlist
+
+# New statements
+incr_stmt: '++'
+decr_stmt: '--'
+
 pass_stmt: 'pass'
 flow_stmt: break_stmt | continue_stmt | return_stmt | raise_stmt | yield_stmt
 break_stmt: 'break'
